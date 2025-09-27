@@ -40,10 +40,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // Llama al Composable principal que construye la cuadrícula
+
                     TopicGrid(
                         modifier = Modifier.padding(8.dp),
-                        topicList = DataSource.topics // Le pasamos la lista de cursos
+                        topicList = DataSource.topics
                     )
                 }
             }
@@ -51,9 +51,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/**
- * Composable que muestra la cuadrícula completa de temas.
- */
 @Composable
 fun TopicGrid(modifier: Modifier = Modifier, topicList: List<Topic>) {
     LazyVerticalGrid(
@@ -62,16 +59,12 @@ fun TopicGrid(modifier: Modifier = Modifier, topicList: List<Topic>) {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
     ) {
-        // Crea una tarjeta (TopicCard) para cada elemento en la lista
         items(topicList) { topic ->
             TopicCard(topic)
         }
     }
 }
 
-/**
- * Composable para una sola tarjeta de tema.
- */
 @Composable
 fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
     Card(modifier = modifier) {
